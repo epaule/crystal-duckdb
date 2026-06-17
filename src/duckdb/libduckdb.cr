@@ -1,4 +1,10 @@
 module DuckDB
+  # Low-level bindings to the DuckDB C API.
+  #
+  # This is the raw `lib` wrapper around `libduckdb` and is used internally by
+  # the higher-level classes (`Connection`, `Statement`, `ResultSet`, etc.). It
+  # links against the system `duckdb` dynamic library, which must be installed
+  # and discoverable by the linker.
   @[Link("duckdb")]
   lib LibDuckDB
     alias CBool = UInt8
@@ -56,7 +62,7 @@ module DuckDB
       VARCHAR
       # Treated as `Bytes`.
       BLOB
-      ## The following types are not used but are included for completeness
+      # # The following types are not used but are included for completeness
       DECIMAL
       TIMESTAMP_S
       TIMESTAMP_MS
@@ -68,7 +74,6 @@ module DuckDB
       UUID
       JSON
     end
-
 
     struct Date
       # Days are stored as days since 1970-01-01
@@ -142,7 +147,6 @@ module DuckDB
     # Closes the specified connection handle
     fun disconnect = duckdb_disconnect(connection : Connection*) : Void
 
-
     # Initializes an empty configuration object that can be used to provide start-up options for the DuckDB instance
     # through `open_ext`
     fun create_config = duckdb_create_config(out_config : Config*) : State
@@ -180,7 +184,6 @@ module DuckDB
     # Returns the error message contained within the result.
     # The error is only set if `duckdb_query` returns `DuckDBError`.
     fun result_error = duckdb_result_error(result : Result*) : LibC::Char*
-
 
     # # SAFE fetch functions
     # These functions will perform conversions if necessary. On failure (e.g. if conversion cannot be performed) a special
@@ -220,7 +223,7 @@ module DuckDB
     fun value_interval = duckdb_value_interval(result : Result*, col : Idx, row : Idx) : Interval
     # Converts the specified value to a string. Supports strings with null bytes and replaces `value_varchar`.
     # The result must be freed with `free`.
-    fun value_string = duckdb_value_string(result : Result*, col : Idx, row : Idx) : LibC::Char*  
+    fun value_string = duckdb_value_string(result : Result*, col : Idx, row : Idx) : LibC::Char*
     # Fetches a blob from a result set column. Returns a blob with blob.data set to nullptr on failure or NULL. The
     # resulting "blob.data" must be freed with duckdb_free.
     fun value_blob = duckdb_value_blob(result : Result*, col : Idx, row : Idx) : Blob
@@ -282,7 +285,7 @@ module DuckDB
     fun append_int16 = duckdb_append_int16(appender : Appender, value : Int16) : State
     fun append_int32 = duckdb_append_int32(appender : Appender, value : Int32) : State
     fun append_int64 = duckdb_append_int64(appender : Appender, value : Int64) : State
-      
+
     fun append_hugeint = duckdb_append_hugeint(appender : Appender, value : HugeInt) : State
 
     fun append_uint8 = duckdb_append_uint8(appender : Appender, value : UInt8) : State

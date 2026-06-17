@@ -1,3 +1,8 @@
+# Represents the `TIMESTAMP` data type of SQL within DuckDB (a `Date` plus a
+# `TimeOfDay`, with microsecond resolution and no timezone).
+#
+# Component accessors such as `#year`, `#hour`, and `#microsecond` are
+# delegated to the underlying `#date` and `#time_of_day`.
 struct DuckDB::Timestamp
   getter date : Date
   getter time_of_day : TimeOfDay
@@ -13,6 +18,7 @@ struct DuckDB::Timestamp
   delegate subsecond?, to: @time_of_day
   delegate submillisecond?, to: @time_of_day
 
+  # Creates a timestamp from a `Date` and a `TimeOfDay`.
   def initialize(@date, @time_of_day)
   end
 
@@ -27,6 +33,8 @@ struct DuckDB::Timestamp
     @time_of_day = TimeOfDay.new(time.hour, time.minute, time.second, time.nanosecond // 1000)
   end
 
+  # Parses a timestamp from a space-separated date and time string
+  # (e.g. `"1999-12-31 10:11:59"`).
   def initialize(string : String)
     strings = string.split(" ")
     @date = Date.new(strings[0])
@@ -46,8 +54,10 @@ struct DuckDB::Timestamp
   end
 
   # Returns the timestamp with an ISO 8601 format.
-  def to_s
-    "#{@date.to_s} #{@time_of_day.to_s}"
+  def to_s(io : IO) : Nil
+    @date.to_s(io)
+    io << ' '
+    @time_of_day.to_s(io)
   end
 
   # Returns a `Time` instance with the respective timestamp in UTC.

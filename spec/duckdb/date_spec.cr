@@ -40,6 +40,17 @@ describe DuckDB::Date do
       date = DuckDB::Date.new(2000, 2, 1)
       date.to_s.should eq "2000-02-01"
     end
+
+    it "zero-pads years with fewer than four digits" do
+      DuckDB::Date.new(5, 2, 1).to_s.should eq "0005-02-01"
+      DuckDB::Date.new(42, 12, 31).to_s.should eq "0042-12-31"
+      DuckDB::Date.new(999, 1, 9).to_s.should eq "0999-01-09"
+    end
+
+    it "formats correctly when interpolated into a string" do
+      date = DuckDB::Date.new(7, 3, 4)
+      "#{date}".should eq "0007-03-04"
+    end
   end
 
   describe "#to_time" do

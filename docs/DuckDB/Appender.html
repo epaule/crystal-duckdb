@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.18.2">
+<meta name="crystal_docs.project_version" content="master-dev">
+<meta name="crystal_docs.project_name" content="duckdb">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="duckdb">
+  <title>DuckDB::Appender - duckdb master-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          duckdb
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="duckdb/DuckDB" data-name="duckdb">
+      <a href="../DuckDB.html">DuckDB</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Any" data-name="duckdb::any">
+      <a href="../DuckDB/Any.html">Any</a>
+      
+    </li>
+  
+  <li class=" current" data-id="duckdb/DuckDB/Appender" data-name="duckdb::appender">
+      <a href="../DuckDB/Appender.html">Appender</a>
+      
+    </li>
+  
+  <li class="parent " data-id="duckdb/DuckDB/Connection" data-name="duckdb::connection">
+      <a href="../DuckDB/Connection.html">Connection</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Connection/Options" data-name="duckdb::connection::options">
+      <a href="../DuckDB/Connection/Options.html">Options</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Date" data-name="duckdb::date">
+      <a href="../DuckDB/Date.html">Date</a>
+      
+    </li>
+  
+  <li class="parent " data-id="duckdb/DuckDB/Driver" data-name="duckdb::driver">
+      <a href="../DuckDB/Driver.html">Driver</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Driver/ConnectionBuilder" data-name="duckdb::driver::connectionbuilder">
+      <a href="../DuckDB/Driver/ConnectionBuilder.html">ConnectionBuilder</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Exception" data-name="duckdb::exception">
+      <a href="../DuckDB/Exception.html">Exception</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/HugeIntHelper" data-name="duckdb::hugeinthelper">
+      <a href="../DuckDB/HugeIntHelper.html">HugeIntHelper</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Interval" data-name="duckdb::interval">
+      <a href="../DuckDB/Interval.html">Interval</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/ResultSet" data-name="duckdb::resultset">
+      <a href="../DuckDB/ResultSet.html">ResultSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Statement" data-name="duckdb::statement">
+      <a href="../DuckDB/Statement.html">Statement</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/TimeOfDay" data-name="duckdb::timeofday">
+      <a href="../DuckDB/TimeOfDay.html">TimeOfDay</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Timestamp" data-name="duckdb::timestamp">
+      <a href="../DuckDB/Timestamp.html">Timestamp</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/UnpreparedStatement" data-name="duckdb::unpreparedstatement">
+      <a href="../DuckDB/UnpreparedStatement.html">UnpreparedStatement</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    class
+  </span> DuckDB::<wbr>Appender
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DuckDB/Appender.html">DuckDB::Appender</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Efficiently bulk-loads rows into a single DuckDB table.</p>
+<p>The appender is the fast path for loading data: it buffers rows and bypasses
+the overhead of individual <code>INSERT</code> statements. It is tied to the connection
+that created it and uses that connection's transaction context.</p>
+<p>Values are pushed with <code>#&lt;&lt;</code> and grouped into rows with <code><a href="../DuckDB/Appender.html#row%28%26%29-instance-method">#row</a></code> (or the lower
+level <code><a href="../DuckDB/Appender.html#begin_row-instance-method">#begin_row</a></code> / <code><a href="../DuckDB/Appender.html#end_row-instance-method">#end_row</a></code>). Buffered rows are sent to the database on
+<code><a href="../DuckDB/Appender.html#flush-instance-method">#flush</a></code> and <code><a href="../DuckDB/Appender.html#close-instance-method">#close</a></code>; typically you obtain one via <code><a href="../DuckDB/Connection.html#appender%28table_name%29-instance-method">Connection#appender</a></code> and
+let the block form close it for you.</p>
+<pre><code class="language-crystal">cnn.appender(<span class="s">&quot;contacts&quot;</span>) <span class="k">do</span> <span class="o">|</span>appender<span class="o">|</span>
+  appender.row <span class="k">do</span> <span class="o">|</span>row<span class="o">|</span>
+    row <span class="o">&lt;&lt;</span> <span class="s">&quot;Alice&quot;</span>
+    row <span class="o">&lt;&lt;</span> <span class="n">30</span>
+    row <span class="o">&lt;&lt;</span> <span class="n">true</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      duckdb/appender.cr
+    
+    <br/>
+  
+
+
+
+
+
+  
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28connection%3AConnection%2Ctable_name%3AString%29-class-method" class="signature"><strong>.new</strong>(connection : Connection, table_name : String)</a>
+        
+          <div class="summary"><p>Creates an appender for <em>table_name</em>, which may be <code>schema.table</code> qualified.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3ANil%29-instance-method" class="signature"><strong>#<<</strong>(value : Nil)</a>
+        
+          <div class="summary"><p>Appends a value to the current row.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3ABool%29-instance-method" class="signature"><strong>#<<</strong>(value : Bool)</a>
+        
+          <div class="summary"><p>Appends a value to the current row.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AInt8%29-instance-method" class="signature"><strong>#<<</strong>(value : Int8)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AInt16%29-instance-method" class="signature"><strong>#<<</strong>(value : Int16)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AInt32%29-instance-method" class="signature"><strong>#<<</strong>(value : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AInt64%29-instance-method" class="signature"><strong>#<<</strong>(value : Int64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AUInt8%29-instance-method" class="signature"><strong>#<<</strong>(value : UInt8)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AUInt16%29-instance-method" class="signature"><strong>#<<</strong>(value : UInt16)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AUInt32%29-instance-method" class="signature"><strong>#<<</strong>(value : UInt32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AUInt64%29-instance-method" class="signature"><strong>#<<</strong>(value : UInt64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AInt128%29-instance-method" class="signature"><strong>#<<</strong>(value : Int128)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AFloat32%29-instance-method" class="signature"><strong>#<<</strong>(value : Float32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AFloat64%29-instance-method" class="signature"><strong>#<<</strong>(value : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AString%29-instance-method" class="signature"><strong>#<<</strong>(value : String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3ABytes%29-instance-method" class="signature"><strong>#<<</strong>(value : Bytes)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3ATime%29-instance-method" class="signature"><strong>#<<</strong>(value : Time)</a>
+        
+          <div class="summary"><p>Appends a UTC <code>Time</code> as a DuckDB <code>TIMESTAMP</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3ADate%29-instance-method" class="signature"><strong>#<<</strong>(value : Date)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3ATimeOfDay%29-instance-method" class="signature"><strong>#<<</strong>(value : TimeOfDay)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3ATimestamp%29-instance-method" class="signature"><strong>#<<</strong>(value : Timestamp)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28value%3AInterval%29-instance-method" class="signature"><strong>#<<</strong>(value : Interval)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#begin_row-instance-method" class="signature"><strong>#begin_row</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_row-instance-method" class="signature"><strong>#end_row</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#flush-instance-method" class="signature"><strong>#flush</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row%28%26%29-instance-method" class="signature"><strong>#row</strong>(&)</a>
+        
+          <div class="summary"><p>Builds a single row: opens it, yields <code>self</code> for the value appends, then closes the row.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_name%3AString-instance-method" class="signature"><strong>#table_name</strong> : String</a>
+        
+          <div class="summary"><p>Name of the table this appender writes to (optionally schema-qualified).</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(connection:Connection,table_name:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(connection : <a href="../DuckDB/Connection.html">Connection</a>, table_name : String)
+
+        <a class="method-permalink" href="#new%28connection%3AConnection%2Ctable_name%3AString%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates an appender for <em>table_name</em>, which may be <code>schema.table</code> qualified.</p>
+<p>Raises <code><a href="../DuckDB/Exception.html">DuckDB::Exception</a></code> if the name has more than one <code>.</code> separator or
+if DuckDB cannot create the appender (e.g. the table does not exist).</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Nil)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3ANil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Appends a value to the current row.</p>
+<p>One overload exists per supported type (see the README datatype table).
+The pushed value must match the column type at the current position;
+a mismatch or other failure raises <code><a href="../DuckDB/Exception.html">DuckDB::Exception</a></code>. Returns <code>self</code> so
+appends can be chained.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Bool)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3ABool%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Appends a value to the current row.</p>
+<p>One overload exists per supported type (see the README datatype table).
+The pushed value must match the column type at the current position;
+a mismatch or other failure raises <code><a href="../DuckDB/Exception.html">DuckDB::Exception</a></code>. Returns <code>self</code> so
+appends can be chained.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Int8)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Int8)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AInt8%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Int16)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Int16)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AInt16%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Int32)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Int64)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Int64)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AInt64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:UInt8)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : UInt8)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AUInt8%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:UInt16)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : UInt16)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AUInt16%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:UInt32)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : UInt32)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AUInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:UInt64)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : UInt64)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AUInt64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Int128)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Int128)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AInt128%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Float32)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Float32)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AFloat32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Float64)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:String)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : String)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Bytes)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Bytes)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3ABytes%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Time)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : Time)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3ATime%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Appends a UTC <code>Time</code> as a DuckDB <code>TIMESTAMP</code>.</p>
+<p>The time is converted to a <code><a href="../DuckDB/Timestamp.html">Timestamp</a></code>, which requires it to be in UTC and
+may lose sub-microsecond precision.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Date)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : <a href="../DuckDB/Date.html">Date</a>)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3ADate%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:TimeOfDay)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : <a href="../DuckDB/TimeOfDay.html">TimeOfDay</a>)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3ATimeOfDay%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Timestamp)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : <a href="../DuckDB/Timestamp.html">Timestamp</a>)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3ATimestamp%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;(value:Interval)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(value : <a href="../DuckDB/Interval.html">Interval</a>)
+
+        <a class="method-permalink" href="#%3C%3C%28value%3AInterval%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="begin_row-instance-method">
+      <div class="signature">
+        
+        def <strong>begin_row</strong>
+
+        <a class="method-permalink" href="#begin_row-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="close-instance-method">
+      <div class="signature">
+        
+        def <strong>close</strong>
+
+        <a class="method-permalink" href="#close-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_row-instance-method">
+      <div class="signature">
+        
+        def <strong>end_row</strong>
+
+        <a class="method-permalink" href="#end_row-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="flush-instance-method">
+      <div class="signature">
+        
+        def <strong>flush</strong>
+
+        <a class="method-permalink" href="#flush-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row(&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>row</strong>(&)
+
+        <a class="method-permalink" href="#row%28%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Builds a single row: opens it, yields <code>self</code> for the value appends, then
+closes the row.</p>
+<pre><code class="language-crystal">appender.row <span class="k">do</span> <span class="o">|</span>row<span class="o">|</span>
+  row <span class="o">&lt;&lt;</span> <span class="s">&quot;Alice&quot;</span>
+  row <span class="o">&lt;&lt;</span> <span class="n">30</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_name:String-instance-method">
+      <div class="signature">
+        
+        def <strong>table_name</strong> : String
+
+        <a class="method-permalink" href="#table_name%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Name of the table this appender writes to (optionally schema-qualified).</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+</div>
+
+</body>
+</html>

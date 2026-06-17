@@ -1,11 +1,22 @@
+# The rows produced by executing a `Statement` or `UnpreparedStatement`.
+#
+# DuckDB materializes the entire result up front, so iteration is index based
+# (`@row_index` / `@column_index`) rather than streaming. `#read` returns the
+# value at the current column, advancing the column cursor, and maps each
+# DuckDB column type to the corresponding Crystal type; unsupported types are
+# returned as `String`.
 class DuckDB::ResultSet < DB::ResultSet
   @row_index = -1
   @column_index = 0
 
+  # Reads the raw value at the current row/column for the given DuckDB C
+  # `value_*` accessor (e.g. `duckdb_value("int32")`).
   macro duckdb_value(kind)
     LibDuckDB.value_{{kind.id}}(self, @column_index, @row_index)
   end
 
+  # Reads the current value as a string, copying it into a Crystal `String`
+  # and freeing the buffer DuckDB allocated for it.
   macro duckdb_set_string
     lib_value = duckdb_value("string")
     string = String.new(lib_value)
@@ -25,6 +36,9 @@ class DuckDB::ResultSet < DB::ResultSet
     LibDuckDB.destroy_result(self)
   end
 
+  # Advances to the next row, resetting the column cursor.
+  #
+  # Returns `false` once every row has been consumed.
   def move_next : Bool
     @row_index += 1
     return false if @row_index >= row_count
@@ -32,8 +46,12 @@ class DuckDB::ResultSet < DB::ResultSet
     true
   end
 
+  # Reads the value at the current column and advances to the next one.
+  #
+  # The returned Crystal type is determined by the column's DuckDB type (see
+  # the README datatype table); `NULL` becomes `nil` and any unsupported type
+  # is returned as a `String`. Raises `DuckDB::Exception` on an invalid column.
   def read
-
     unless duckdb_value("is_null").zero?
       @column_index += 1
       return nil
@@ -42,74 +60,80 @@ class DuckDB::ResultSet < DB::ResultSet
     column_type = LibDuckDB.column_type(self, @column_index)
 
     value = case column_type
-      when .invalid?
-        raise Exception.new("Invalid column type at row #{@row_index} and column #{@column_index}")
-      when .tinyint?
-        duckdb_value("int8")
-      when .smallint?
-        duckdb_value("int16")
-      when .integer?
-        duckdb_value("int32")
-      when .bigint?
-        duckdb_value("int64")
-      when .utinyint?
-        duckdb_value("uint8")
-      when .usmallint?
-        duckdb_value("uint16")
-      when .uinteger?
-        duckdb_value("uint32")
-      when .ubigint?
-        duckdb_value("uint64")
-      when .float?
-        duckdb_value("float")
-      when .double?
-        duckdb_value("double")
-      when .boolean?
-        duckdb_value("boolean") != 0
-      when .varchar?
-        duckdb_set_string
-      when .blob?
-        blob = duckdb_value("blob")
-        bytes = Bytes.new(blob.size)
-        bytes.copy_from(blob.data.as(UInt8*), blob.size)
-        LibDuckDB.free(blob.data)
-        bytes
-      when .timestamp?
-        Timestamp.new duckdb_value("timestamp").micros
-      when .date?
-        Date.new duckdb_value("date").days
-      when .time?
-        TimeOfDay.new duckdb_value("time").micros
-      when .interval?
-        lib_i = duckdb_value("interval")
-        Interval.new lib_i.micros, lib_i.days, lib_i.months
-      when .hugeint?
-        HugeIntHelper.huge_to_i128(duckdb_value("hugeint"))
-      else
-        # Treat non supported types as strings
-        duckdb_set_string
-      end
+            when .invalid?
+              raise Exception.new("Invalid column type at row #{@row_index} and column #{@column_index}")
+            when .tinyint?
+              duckdb_value("int8")
+            when .smallint?
+              duckdb_value("int16")
+            when .integer?
+              duckdb_value("int32")
+            when .bigint?
+              duckdb_value("int64")
+            when .utinyint?
+              duckdb_value("uint8")
+            when .usmallint?
+              duckdb_value("uint16")
+            when .uinteger?
+              duckdb_value("uint32")
+            when .ubigint?
+              duckdb_value("uint64")
+            when .float?
+              duckdb_value("float")
+            when .double?
+              duckdb_value("double")
+            when .boolean?
+              duckdb_value("boolean") != 0
+            when .varchar?
+              duckdb_set_string
+            when .blob?
+              blob = duckdb_value("blob")
+              bytes = Bytes.new(blob.size)
+              bytes.copy_from(blob.data.as(UInt8*), blob.size)
+              LibDuckDB.free(blob.data)
+              bytes
+            when .timestamp?
+              Timestamp.new duckdb_value("timestamp").micros
+            when .date?
+              Date.new duckdb_value("date").days
+            when .time?
+              TimeOfDay.new duckdb_value("time").micros
+            when .interval?
+              lib_i = duckdb_value("interval")
+              Interval.new lib_i.micros, lib_i.days, lib_i.months
+            when .hugeint?
+              HugeIntHelper.huge_to_i128(duckdb_value("hugeint"))
+            else
+              # Treat non supported types as strings
+              duckdb_set_string
+            end
     @column_index += 1
     value
   end
 
+  # Reads a `TIMESTAMP` column as a UTC `Time`.
   def read(t : Time.class) : Time
     read(Timestamp).to_time
   end
 
+  # Reads a nullable `TIMESTAMP` column as a UTC `Time?`.
   def read(t : Time?.class) : Time?
     read(Timestamp?).try &.to_time
   end
 
+  # Number of columns in the result.
   def column_count : Int32
     LibDuckDB.column_count(self).to_i32
   end
 
+  # Name of the column at *index*, or `""` if DuckDB reports none.
   def column_name(index : Int32) : String
     p = LibDuckDB.column_name(self, index)
     p.null? ? "" : String.new(p)
   end
 
+  # Index of the column that the next `#read` will return, clamped to
+  # `#column_count`.
   def next_column_index : Int32
     @column_index <= column_count ? @column_index : column_count
   end
@@ -126,6 +150,7 @@ class DuckDB::ResultSet < DB::ResultSet
     @statement.as(Statement)
   end
 
+  # :nodoc:
   def to_unsafe
     pointerof(@result)
   end

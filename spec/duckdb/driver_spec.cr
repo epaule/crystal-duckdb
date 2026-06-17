@@ -26,7 +26,7 @@ describe Driver do
       expect_raises(DuckDB::Exception) do
         value = "invalid"
         with_db "null_order=#{value}" do |db|
-          config = db.scalar "SELECT current_setting('null_order')"
+          db.scalar "SELECT current_setting('null_order')"
         end
       end
     end

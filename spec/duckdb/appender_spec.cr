@@ -8,7 +8,7 @@ macro it_appends(klass, datatype, value)
         appender.row do |r|
           r << {{value}}
         end
-      end  
+      end
       actual = cnn.scalar("SELECT test_field FROM test_table;")
       actual.should eq {{value}}
     end

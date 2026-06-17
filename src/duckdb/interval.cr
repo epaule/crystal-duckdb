@@ -1,13 +1,20 @@
-
+# Represents the `INTERVAL` data type of SQL within DuckDB.
+#
+# DuckDB stores intervals as three independent fields — `months`, `days`, and
+# `microseconds` — because the length of a month or day is not fixed. This is
+# why converting to a `Time::Span` may require approximating months as days.
 struct DuckDB::Interval # Shamelessly copied from PG::Interval of the Postgres driver
   getter microseconds, days, months
 
+  # Creates an interval from its three independent fields.
   def initialize(@microseconds : Int64 = 0, @days : Int32 = 0, @months : Int32 = 0)
   end
 
-  # Create a `Time::Span` from this `DuckDB::Interval`
-  # If the interval covered in the interval exceeds the range of `Time::Span`
-  #  then an exception is raised.
+  # Creates a `Time::Span` from this `DuckDB::Interval`.
+  #
+  # When `months` is non-zero, *approx_months* must give the number of days to
+  # count per month; otherwise a `DuckDB::Exception` is raised because months
+  # have no fixed length. Raises if the result exceeds the range of `Time::Span`.
   def to_span(approx_months : Int? = nil)
     d = days
 
@@ -26,15 +33,18 @@ struct DuckDB::Interval # Shamelessly copied from PG::Interval of the Postgres d
     Time::Span.new(days: d, seconds: seconds, nanoseconds: nanoseconds)
   end
 
+  # Returns the `months` field as a `Time::MonthSpan`.
   def to_month_span
     Time::MonthSpan.new(months)
   end
 
+  # Returns the interval split into a `{Time::Span, Time::MonthSpan}` tuple, so
+  # the months can be applied to a `Time` without approximation.
   def to_spans
     {
       to_span(0),
       to_month_span,
-     }
+    }
   end
 
   def ==(other : self) : Bool

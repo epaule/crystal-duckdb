@@ -1,3 +1,9 @@
+# A DuckDB prepared statement.
+#
+# Created by `crystal-db` when a query is executed with bind parameters (the
+# default path for `query`/`exec`/`scalar`). Each supported argument type has a
+# private `bind_arg` overload that maps it to the matching DuckDB C `bind_*`
+# call; unsupported types raise at bind time.
 class DuckDB::Statement < DB::Statement
   def initialize(connection, command)
     super(connection, command)
@@ -91,6 +97,7 @@ class DuckDB::Statement < DB::Statement
     @connection.as(Connection).to_unsafe
   end
 
+  # :nodoc:
   def to_unsafe
     @statement
   end

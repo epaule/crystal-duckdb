@@ -5,7 +5,7 @@ class DB::DriverSpecs # Monkey-patch to exclude specs not supported by DuckDB
   EXCLUDED_ITS = [
     "nested transactions: can read inside transaction and rollback after",
     "transactions: can read inside transaction and rollback after",
-    "transactions: can read inside transaction or after commit"
+    "transactions: can read inside transaction or after commit",
   ]
 
   def it(description = "assert", prepared = :default, file = __FILE__, line = __LINE__, end_line = __END_LINE__, &block : DB::Database ->)
@@ -64,7 +64,7 @@ DB::DriverSpecs(DuckDB::Any).run do |ctx|
   ary = UInt8[0x44, 0x75, 0x63, 0x6b, 0x44, 0x42]
   sample_value Bytes.new(ary.to_unsafe, ary.size), "BLOB", "'DuckDB'" # , type_safe_value: false
 
-  binding_syntax do |index|
+  binding_syntax do |_|
     "?"
   end
 
@@ -117,7 +117,7 @@ DB::DriverSpecs(DuckDB::Any).run do |ctx|
     db.exec %(create table if not exists a (i int not null, str text not null);)
     db.exec %(insert into a (i, str) values (23, 'bai bai');)
 
-    2.times do |i|
+    2.times do |_|
       DB.open ctx.connection_string do |db|
         begin
           db.query("SELECT i, str FROM a WHERE i = ?", 23) do |rs|

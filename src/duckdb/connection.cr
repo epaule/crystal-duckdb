@@ -1,5 +1,18 @@
+# A connection to a DuckDB database.
+#
+# Obtained through the standard `crystal-db` API (`DB.connect` / `DB.open`)
+# rather than instantiated directly. In addition to the inherited query/exec
+# methods it exposes `#appender` for efficient bulk loading.
 class DuckDB::Connection < DB::Connection
+  # DuckDB-specific connection options parsed out of the connection URI.
+  #
+  # `filename` is the database path (or `:memory:` for an in-memory database)
+  # and `config_params` holds any [DuckDB engine configuration](https://duckdb.org/docs/sql/configuration)
+  # options passed as URI query params.
   record Options, filename : String, config_params : Hash(String, String) do
+    # URI query keys consumed by `crystal-db` itself (pool sizing, retries,
+    # etc.). They are filtered out so they are not forwarded to DuckDB as
+    # engine configuration.
     CRYSTAL_DB_PARAM_KEYS = %[
       initial_pool_size
       max_pool_size
@@ -13,6 +26,11 @@ class DuckDB::Connection < DB::Connection
     def initialize(@filename, @config_params)
     end
 
+    # Builds `Options` from a `duckdb://` URI.
+    #
+    # The host and path form the database filename; every query param that is
+    # not a `crystal-db` pool key (see `CRYSTAL_DB_PARAM_KEYS`) is treated as a
+    # DuckDB engine configuration setting.
     def self.from_uri(uri : URI)
       raw_host = uri.host || ""
       # Crystal's URI parser wraps colon-separated hosts in IPv6 brackets,
@@ -32,6 +50,10 @@ class DuckDB::Connection < DB::Connection
     end
   end
 
+  # Opens the database and establishes a connection.
+  #
+  # When DuckDB engine config params are present, the database is opened with a
+  # config object via `open_ext`; an invalid setting raises `DuckDB::Exception`.
   def initialize(options : ::DB::Connection::Options, duckdb_options : Options)
     super(options)
     if duckdb_options.config_params.empty?
@@ -52,11 +74,25 @@ class DuckDB::Connection < DB::Connection
     check LibDuckDB.connect(@db, out @conn)
   end
 
+  # Returns a new `Appender` for bulk-loading rows into *table_name*.
+  #
+  # The caller is responsible for flushing and closing the appender.
   def appender(table_name)
     Appender.new(self, table_name)
   end
 
-  def appender(table_name, &block)
+  # Yields an `Appender` for *table_name* and closes it when the block returns,
+  # flushing any buffered rows.
+  #
+  # ```
+  # cnn.appender("contacts") do |appender|
+  #   appender.row do |row|
+  #     row << "Alice"
+  #     row << 30
+  #   end
+  # end
+  # ```
+  def appender(table_name, &)
     appender = Appender.new(self, table_name)
     yield appender
     appender.close
@@ -76,6 +112,7 @@ class DuckDB::Connection < DB::Connection
     UnpreparedStatement.new(self, query)
   end
 
+  # :nodoc:
   def to_unsafe
     @conn
   end

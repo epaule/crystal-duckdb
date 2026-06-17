@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.18.2">
+<meta name="crystal_docs.project_version" content="master-dev">
+<meta name="crystal_docs.project_name" content="duckdb">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="duckdb">
+  <title>DuckDB::TimeOfDay - duckdb master-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          duckdb
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="duckdb/DuckDB" data-name="duckdb">
+      <a href="../DuckDB.html">DuckDB</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Any" data-name="duckdb::any">
+      <a href="../DuckDB/Any.html">Any</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Appender" data-name="duckdb::appender">
+      <a href="../DuckDB/Appender.html">Appender</a>
+      
+    </li>
+  
+  <li class="parent " data-id="duckdb/DuckDB/Connection" data-name="duckdb::connection">
+      <a href="../DuckDB/Connection.html">Connection</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Connection/Options" data-name="duckdb::connection::options">
+      <a href="../DuckDB/Connection/Options.html">Options</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Date" data-name="duckdb::date">
+      <a href="../DuckDB/Date.html">Date</a>
+      
+    </li>
+  
+  <li class="parent " data-id="duckdb/DuckDB/Driver" data-name="duckdb::driver">
+      <a href="../DuckDB/Driver.html">Driver</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Driver/ConnectionBuilder" data-name="duckdb::driver::connectionbuilder">
+      <a href="../DuckDB/Driver/ConnectionBuilder.html">ConnectionBuilder</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Exception" data-name="duckdb::exception">
+      <a href="../DuckDB/Exception.html">Exception</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/HugeIntHelper" data-name="duckdb::hugeinthelper">
+      <a href="../DuckDB/HugeIntHelper.html">HugeIntHelper</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Interval" data-name="duckdb::interval">
+      <a href="../DuckDB/Interval.html">Interval</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/ResultSet" data-name="duckdb::resultset">
+      <a href="../DuckDB/ResultSet.html">ResultSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Statement" data-name="duckdb::statement">
+      <a href="../DuckDB/Statement.html">Statement</a>
+      
+    </li>
+  
+  <li class=" current" data-id="duckdb/DuckDB/TimeOfDay" data-name="duckdb::timeofday">
+      <a href="../DuckDB/TimeOfDay.html">TimeOfDay</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Timestamp" data-name="duckdb::timestamp">
+      <a href="../DuckDB/Timestamp.html">Timestamp</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/UnpreparedStatement" data-name="duckdb::unpreparedstatement">
+      <a href="../DuckDB/UnpreparedStatement.html">UnpreparedStatement</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    struct
+  </span> DuckDB::<wbr>TimeOfDay
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DuckDB/TimeOfDay.html">DuckDB::TimeOfDay</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Represents the <code>TIME</code> data type of SQL within DuckDB (a time of day with
+microsecond resolution and no date component).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      duckdb/time_of_day.cr
+    
+    <br/>
+  
+
+
+
+
+
+  
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28hour%3AInt32%2Cminute%3AInt32%2Csecond%3AInt32%3D0%2Cmicrosecond%3AInt32%3D0%29-class-method" class="signature"><strong>.new</strong>(hour : Int32, minute : Int32, second : Int32 = <span class="n">0</span>, microsecond : Int32 = <span class="n">0</span>)</a>
+        
+          <div class="summary"><p>Creates a time of day from its components.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28time%3ATime%29-class-method" class="signature"><strong>.new</strong>(time : Time)</a>
+        
+          <div class="summary"><p><span class="flag purple">NOTE</span>  It raises <code>ArgumentError</code> if <code>time</code> is not in UTC.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28span%3ATime%3A%3ASpan%29-class-method" class="signature"><strong>.new</strong>(span : Time::Span)</a>
+        
+          <div class="summary"><p><span class="flag purple">NOTE</span>  It raises <code>ArgumentError</code> unless <code>span</code> is less than one day.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28string%3AString%29-class-method" class="signature"><strong>.new</strong>(string : String)</a>
+        
+          <div class="summary"><p>Parses a time of day from a string, with or without a fractional part (e.g.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28microseconds%3AInt64%29-class-method" class="signature"><strong>.new</strong>(microseconds : Int64)</a>
+        
+          <div class="summary"><p>Initialize with microseconds since 00:00:00 NOTE: It raises <code>ArgumentError</code> unless <code>microseconds</code> represent less than one day.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="signature"><strong>#==</strong>(other : <span class="k">self</span>) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hour%3AInt32-instance-method" class="signature"><strong>#hour</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#microsecond%3AInt32-instance-method" class="signature"><strong>#microsecond</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#millisecond-instance-method" class="signature"><strong>#millisecond</strong></a>
+        
+          <div class="summary"><p>Milliseconds part, truncated from <code><a href="../DuckDB/TimeOfDay.html#microsecond%3AInt32-instance-method">#microsecond</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#minute%3AInt32-instance-method" class="signature"><strong>#minute</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#second%3AInt32-instance-method" class="signature"><strong>#second</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#submillisecond%3F-instance-method" class="signature"><strong>#submillisecond?</strong></a>
+        
+          <div class="summary"><p>Whether the fractional-second part is finer than one millisecond.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#subsecond%3F-instance-method" class="signature"><strong>#subsecond?</strong></a>
+        
+          <div class="summary"><p>Whether there is a non-zero fractional-second part.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_s%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#to_s</strong>(io : IO) : Nil</a>
+        
+          <div class="summary"><p>Returns the time of day as a string, including a trimmed fractional part when present (e.g.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_span%3ATime%3A%3ASpan-instance-method" class="signature"><strong>#to_span</strong> : Time::Span</a>
+        
+          <div class="summary"><p>Returns the elapsed time since midnight as a <code>Time::Span</code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(hour:Int32,minute:Int32,second:Int32=0,microsecond:Int32=0)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(hour : Int32, minute : Int32, second : Int32 = <span class="n">0</span>, microsecond : Int32 = <span class="n">0</span>)
+
+        <a class="method-permalink" href="#new%28hour%3AInt32%2Cminute%3AInt32%2Csecond%3AInt32%3D0%2Cmicrosecond%3AInt32%3D0%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a time of day from its components.</p>
+<p>Raises <code>ArgumentError</code> if any component is out of range.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(time:Time)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(time : Time)
+
+        <a class="method-permalink" href="#new%28time%3ATime%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><span class="flag purple">NOTE</span>  It raises <code>ArgumentError</code> if <code>time</code> is not in UTC.</p>
+<p><span class="flag purple">NOTE</span>  Beware the loss of precision in the fractional part (nanoseconds to microseconds)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(span:Time::Span)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(span : Time::Span)
+
+        <a class="method-permalink" href="#new%28span%3ATime%3A%3ASpan%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><span class="flag purple">NOTE</span>  It raises <code>ArgumentError</code> unless <code>span</code> is less than one day.</p>
+<p><span class="flag purple">NOTE</span>  Beware of loss of precision for the fractional part (nanoseconds to microseconds).</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(string:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(string : String)
+
+        <a class="method-permalink" href="#new%28string%3AString%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Parses a time of day from a string, with or without a fractional part
+(e.g. <code>&quot;10:11:59&quot;</code> or <code>&quot;10:11:59.5&quot;</code>).</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(microseconds:Int64)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(microseconds : Int64)
+
+        <a class="method-permalink" href="#new%28microseconds%3AInt64%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Initialize with microseconds since 00:00:00</p>
+<p><span class="flag purple">NOTE</span>  It raises <code>ArgumentError</code> unless <code>microseconds</code> represent less than one day.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="==(other:self):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>==</strong>(other : <span class="k">self</span>) : Bool
+
+        <a class="method-permalink" href="#%3D%3D%28other%3Aself%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hour:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>hour</strong> : Int32
+
+        <a class="method-permalink" href="#hour%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="microsecond:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>microsecond</strong> : Int32
+
+        <a class="method-permalink" href="#microsecond%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="millisecond-instance-method">
+      <div class="signature">
+        
+        def <strong>millisecond</strong>
+
+        <a class="method-permalink" href="#millisecond-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Milliseconds part, truncated from <code><a href="../DuckDB/TimeOfDay.html#microsecond%3AInt32-instance-method">#microsecond</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="minute:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>minute</strong> : Int32
+
+        <a class="method-permalink" href="#minute%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="second:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>second</strong> : Int32
+
+        <a class="method-permalink" href="#second%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="submillisecond?-instance-method">
+      <div class="signature">
+        
+        def <strong>submillisecond?</strong>
+
+        <a class="method-permalink" href="#submillisecond%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Whether the fractional-second part is finer than one millisecond.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="subsecond?-instance-method">
+      <div class="signature">
+        
+        def <strong>subsecond?</strong>
+
+        <a class="method-permalink" href="#subsecond%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Whether there is a non-zero fractional-second part.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_s(io:IO):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>to_s</strong>(io : IO) : Nil
+
+        <a class="method-permalink" href="#to_s%28io%3AIO%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the time of day as a string, including a trimmed fractional part
+when present (e.g. <code>&quot;10:11:59&quot;</code> or <code>&quot;10:11:59.5&quot;</code>).</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_span:Time::Span-instance-method">
+      <div class="signature">
+        
+        def <strong>to_span</strong> : Time::Span
+
+        <a class="method-permalink" href="#to_span%3ATime%3A%3ASpan-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the elapsed time since midnight as a <code>Time::Span</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+</div>
+
+</body>
+</html>

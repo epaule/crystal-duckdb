@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.18.2">
+<meta name="crystal_docs.project_version" content="master-dev">
+<meta name="crystal_docs.project_name" content="duckdb">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="duckdb">
+  <title>DuckDB::Interval - duckdb master-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          duckdb
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="duckdb/DuckDB" data-name="duckdb">
+      <a href="../DuckDB.html">DuckDB</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Any" data-name="duckdb::any">
+      <a href="../DuckDB/Any.html">Any</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Appender" data-name="duckdb::appender">
+      <a href="../DuckDB/Appender.html">Appender</a>
+      
+    </li>
+  
+  <li class="parent " data-id="duckdb/DuckDB/Connection" data-name="duckdb::connection">
+      <a href="../DuckDB/Connection.html">Connection</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Connection/Options" data-name="duckdb::connection::options">
+      <a href="../DuckDB/Connection/Options.html">Options</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Date" data-name="duckdb::date">
+      <a href="../DuckDB/Date.html">Date</a>
+      
+    </li>
+  
+  <li class="parent " data-id="duckdb/DuckDB/Driver" data-name="duckdb::driver">
+      <a href="../DuckDB/Driver.html">Driver</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Driver/ConnectionBuilder" data-name="duckdb::driver::connectionbuilder">
+      <a href="../DuckDB/Driver/ConnectionBuilder.html">ConnectionBuilder</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Exception" data-name="duckdb::exception">
+      <a href="../DuckDB/Exception.html">Exception</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/HugeIntHelper" data-name="duckdb::hugeinthelper">
+      <a href="../DuckDB/HugeIntHelper.html">HugeIntHelper</a>
+      
+    </li>
+  
+  <li class=" current" data-id="duckdb/DuckDB/Interval" data-name="duckdb::interval">
+      <a href="../DuckDB/Interval.html">Interval</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/ResultSet" data-name="duckdb::resultset">
+      <a href="../DuckDB/ResultSet.html">ResultSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Statement" data-name="duckdb::statement">
+      <a href="../DuckDB/Statement.html">Statement</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/TimeOfDay" data-name="duckdb::timeofday">
+      <a href="../DuckDB/TimeOfDay.html">TimeOfDay</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Timestamp" data-name="duckdb::timestamp">
+      <a href="../DuckDB/Timestamp.html">Timestamp</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/UnpreparedStatement" data-name="duckdb::unpreparedstatement">
+      <a href="../DuckDB/UnpreparedStatement.html">UnpreparedStatement</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    struct
+  </span> DuckDB::<wbr>Interval
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DuckDB/Interval.html">DuckDB::Interval</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Represents the <code>INTERVAL</code> data type of SQL within DuckDB.</p>
+<p>DuckDB stores intervals as three independent fields — <code><a href="../DuckDB/Interval.html#months%3AInt32-instance-method">#months</a></code>, <code><a href="../DuckDB/Interval.html#days%3AInt32-instance-method">#days</a></code>, and
+<code><a href="../DuckDB/Interval.html#microseconds%3AInt64-instance-method">#microseconds</a></code> — because the length of a month or day is not fixed. This is
+why converting to a <code>Time::Span</code> may require approximating months as days.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      duckdb/interval.cr
+    
+    <br/>
+  
+
+
+
+
+
+  
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28microseconds%3AInt64%3D0%2Cdays%3AInt32%3D0%2Cmonths%3AInt32%3D0%29-class-method" class="signature"><strong>.new</strong>(microseconds : Int64 = <span class="n">0</span>, days : Int32 = <span class="n">0</span>, months : Int32 = <span class="n">0</span>)</a>
+        
+          <div class="summary"><p>Creates an interval from its three independent fields.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28other%3Aself%29%3ABool-instance-method" class="signature"><strong>#==</strong>(other : <span class="k">self</span>) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#days%3AInt32-instance-method" class="signature"><strong>#days</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#microseconds%3AInt64-instance-method" class="signature"><strong>#microseconds</strong> : Int64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#months%3AInt32-instance-method" class="signature"><strong>#months</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_month_span-instance-method" class="signature"><strong>#to_month_span</strong></a>
+        
+          <div class="summary"><p>Returns the <code><a href="../DuckDB/Interval.html#months%3AInt32-instance-method">#months</a></code> field as a <code>Time::MonthSpan</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_span%28approx_months%3AInt%7CNil%3Dnil%29-instance-method" class="signature"><strong>#to_span</strong>(approx_months : Int | Nil = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Creates a <code>Time::Span</code> from this <code><a href="../DuckDB/Interval.html">DuckDB::Interval</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_spans-instance-method" class="signature"><strong>#to_spans</strong></a>
+        
+          <div class="summary"><p>Returns the interval split into a <code>{Time::Span, Time::MonthSpan}</code> tuple, so the months can be applied to a <code>Time</code> without approximation.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(microseconds:Int64=0,days:Int32=0,months:Int32=0)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(microseconds : Int64 = <span class="n">0</span>, days : Int32 = <span class="n">0</span>, months : Int32 = <span class="n">0</span>)
+
+        <a class="method-permalink" href="#new%28microseconds%3AInt64%3D0%2Cdays%3AInt32%3D0%2Cmonths%3AInt32%3D0%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates an interval from its three independent fields.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="==(other:self):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>==</strong>(other : <span class="k">self</span>) : Bool
+
+        <a class="method-permalink" href="#%3D%3D%28other%3Aself%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="days:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>days</strong> : Int32
+
+        <a class="method-permalink" href="#days%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="microseconds:Int64-instance-method">
+      <div class="signature">
+        
+        def <strong>microseconds</strong> : Int64
+
+        <a class="method-permalink" href="#microseconds%3AInt64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="months:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>months</strong> : Int32
+
+        <a class="method-permalink" href="#months%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_month_span-instance-method">
+      <div class="signature">
+        
+        def <strong>to_month_span</strong>
+
+        <a class="method-permalink" href="#to_month_span-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the <code><a href="../DuckDB/Interval.html#months%3AInt32-instance-method">#months</a></code> field as a <code>Time::MonthSpan</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_span(approx_months:Int|Nil=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>to_span</strong>(approx_months : Int | Nil = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#to_span%28approx_months%3AInt%7CNil%3Dnil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a <code>Time::Span</code> from this <code><a href="../DuckDB/Interval.html">DuckDB::Interval</a></code>.</p>
+<p>When <code><a href="../DuckDB/Interval.html#months%3AInt32-instance-method">#months</a></code> is non-zero, <em>approx_months</em> must give the number of days to
+count per month; otherwise a <code><a href="../DuckDB/Exception.html">DuckDB::Exception</a></code> is raised because months
+have no fixed length. Raises if the result exceeds the range of <code>Time::Span</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_spans-instance-method">
+      <div class="signature">
+        
+        def <strong>to_spans</strong>
+
+        <a class="method-permalink" href="#to_spans-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the interval split into a <code>{Time::Span, Time::MonthSpan}</code> tuple, so
+the months can be applied to a <code>Time</code> without approximation.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+</div>
+
+</body>
+</html>

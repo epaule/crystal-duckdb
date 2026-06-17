@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.18.2">
+<meta name="crystal_docs.project_version" content="master-dev">
+<meta name="crystal_docs.project_name" content="duckdb">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="duckdb">
+  <title>DuckDB::ResultSet - duckdb master-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          duckdb
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="duckdb/DuckDB" data-name="duckdb">
+      <a href="../DuckDB.html">DuckDB</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Any" data-name="duckdb::any">
+      <a href="../DuckDB/Any.html">Any</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Appender" data-name="duckdb::appender">
+      <a href="../DuckDB/Appender.html">Appender</a>
+      
+    </li>
+  
+  <li class="parent " data-id="duckdb/DuckDB/Connection" data-name="duckdb::connection">
+      <a href="../DuckDB/Connection.html">Connection</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Connection/Options" data-name="duckdb::connection::options">
+      <a href="../DuckDB/Connection/Options.html">Options</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Date" data-name="duckdb::date">
+      <a href="../DuckDB/Date.html">Date</a>
+      
+    </li>
+  
+  <li class="parent " data-id="duckdb/DuckDB/Driver" data-name="duckdb::driver">
+      <a href="../DuckDB/Driver.html">Driver</a>
+      
+        <ul>
+  
+  <li class=" " data-id="duckdb/DuckDB/Driver/ConnectionBuilder" data-name="duckdb::driver::connectionbuilder">
+      <a href="../DuckDB/Driver/ConnectionBuilder.html">ConnectionBuilder</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Exception" data-name="duckdb::exception">
+      <a href="../DuckDB/Exception.html">Exception</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/HugeIntHelper" data-name="duckdb::hugeinthelper">
+      <a href="../DuckDB/HugeIntHelper.html">HugeIntHelper</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Interval" data-name="duckdb::interval">
+      <a href="../DuckDB/Interval.html">Interval</a>
+      
+    </li>
+  
+  <li class=" current" data-id="duckdb/DuckDB/ResultSet" data-name="duckdb::resultset">
+      <a href="../DuckDB/ResultSet.html">ResultSet</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Statement" data-name="duckdb::statement">
+      <a href="../DuckDB/Statement.html">Statement</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/TimeOfDay" data-name="duckdb::timeofday">
+      <a href="../DuckDB/TimeOfDay.html">TimeOfDay</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/Timestamp" data-name="duckdb::timestamp">
+      <a href="../DuckDB/Timestamp.html">Timestamp</a>
+      
+    </li>
+  
+  <li class=" " data-id="duckdb/DuckDB/UnpreparedStatement" data-name="duckdb::unpreparedstatement">
+      <a href="../DuckDB/UnpreparedStatement.html">UnpreparedStatement</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    class
+  </span> DuckDB::<wbr>ResultSet
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DuckDB/ResultSet.html">DuckDB::ResultSet</a></li><li class="superclass">DB::ResultSet</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>The rows produced by executing a <code><a href="../DuckDB/Statement.html">Statement</a></code> or <code><a href="../DuckDB/UnpreparedStatement.html">UnpreparedStatement</a></code>.</p>
+<p>DuckDB materializes the entire result up front, so iteration is index based
+(<code>@row_index</code> / <code>@column_index</code>) rather than streaming. <code><a href="../DuckDB/ResultSet.html#read-instance-method">#read</a></code> returns the
+value at the current column, advancing the column cursor, and maps each
+DuckDB column type to the corresponding Crystal type; unsupported types are
+returned as <code>String</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      duckdb/result_set.cr
+    
+    <br/>
+  
+
+
+
+
+
+  
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28statement%3AStatement%29-class-method" class="signature"><strong>.new</strong>(statement : Statement)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28statement%3AUnpreparedStatement%29-class-method" class="signature"><strong>.new</strong>(statement : UnpreparedStatement)</a>
+        
+      </li>
+    
+  </ul>
+
+
+  
+
+  
+  <h2>
+    <a id="macro-summary" class="anchor" href="#macro-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#duckdb_set_string-macro" class="signature"><strong>duckdb_set_string</strong></a>
+        
+          <div class="summary"><p>Reads the current value as a string, copying it into a Crystal <code>String</code> and freeing the buffer DuckDB allocated for it.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#duckdb_value%28kind%29-macro" class="signature"><strong>duckdb_value</strong>(kind)</a>
+        
+          <div class="summary"><p>Reads the raw value at the current row/column for the given DuckDB C <code>value_*</code> accessor (e.g.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+  
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#column_count%3AInt32-instance-method" class="signature"><strong>#column_count</strong> : Int32</a>
+        
+          <div class="summary"><p>Number of columns in the result.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#column_name%28index%3AInt32%29%3AString-instance-method" class="signature"><strong>#column_name</strong>(index : Int32) : String</a>
+        
+          <div class="summary"><p>Name of the column at <em>index</em>, or <code>&quot;&quot;</code> if DuckDB reports none.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#move_next%3ABool-instance-method" class="signature"><strong>#move_next</strong> : Bool</a>
+        
+          <div class="summary"><p>Advances to the next row, resetting the column cursor.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#next_column_index%3AInt32-instance-method" class="signature"><strong>#next_column_index</strong> : Int32</a>
+        
+          <div class="summary"><p>Index of the column that the next <code><a href="../DuckDB/ResultSet.html#read-instance-method">#read</a></code> will return, clamped to <code><a href="../DuckDB/ResultSet.html#column_count%3AInt32-instance-method">#column_count</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%28t%3ATime.class%29%3ATime-instance-method" class="signature"><strong>#read</strong>(t : <span class="t">Time</span>.<span class="k">class</span>) : Time</a>
+        
+          <div class="summary"><p>Reads a <code>TIMESTAMP</code> column as a UTC <code>Time</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read%28t%3A%28Time%7C%3A%3ANil%29.class%29%3ATime%7CNil-instance-method" class="signature"><strong>#read</strong>(t : (<span class="t">Time</span> <span class="o">|</span> <span class="t">::</span><span class="t">Nil</span>).<span class="k">class</span>) : Time | Nil</a>
+        
+          <div class="summary"><p>Reads a nullable <code>TIMESTAMP</code> column as a UTC <code>Time?</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read-instance-method" class="signature"><strong>#read</strong></a>
+        
+          <div class="summary"><p>Reads the value at the current column and advances to the next one.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(statement:Statement)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(statement : <a href="../DuckDB/Statement.html">Statement</a>)
+
+        <a class="method-permalink" href="#new%28statement%3AStatement%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(statement:UnpreparedStatement)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(statement : <a href="../DuckDB/UnpreparedStatement.html">UnpreparedStatement</a>)
+
+        <a class="method-permalink" href="#new%28statement%3AUnpreparedStatement%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+  
+
+  
+  <h2>
+    <a id="macro-detail" class="anchor" href="#macro-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Detail
+  </h2>
+  
+    <div class="entry-detail" id="duckdb_set_string-macro">
+      <div class="signature">
+        
+        macro <strong>duckdb_set_string</strong>
+
+        <a class="method-permalink" href="#duckdb_set_string-macro">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Reads the current value as a string, copying it into a Crystal <code>String</code>
+and freeing the buffer DuckDB allocated for it.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="duckdb_value(kind)-macro">
+      <div class="signature">
+        
+        macro <strong>duckdb_value</strong>(kind)
+
+        <a class="method-permalink" href="#duckdb_value%28kind%29-macro">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Reads the raw value at the current row/column for the given DuckDB C
+<code>value_*</code> accessor (e.g. <code><a href="../DuckDB/ResultSet.html#duckdb_value%28kind%29-macro">duckdb_value(&quot;int32&quot;)</a></code>).</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="column_count:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>column_count</strong> : Int32
+
+        <a class="method-permalink" href="#column_count%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Number of columns in the result.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="column_name(index:Int32):String-instance-method">
+      <div class="signature">
+        
+        def <strong>column_name</strong>(index : Int32) : String
+
+        <a class="method-permalink" href="#column_name%28index%3AInt32%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Name of the column at <em>index</em>, or <code>&quot;&quot;</code> if DuckDB reports none.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="move_next:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>move_next</strong> : Bool
+
+        <a class="method-permalink" href="#move_next%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Advances to the next row, resetting the column cursor.</p>
+<p>Returns <code>false</code> once every row has been consumed.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="next_column_index:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>next_column_index</strong> : Int32
+
+        <a class="method-permalink" href="#next_column_index%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Index of the column that the next <code><a href="../DuckDB/ResultSet.html#read-instance-method">#read</a></code> will return, clamped to
+<code><a href="../DuckDB/ResultSet.html#column_count%3AInt32-instance-method">#column_count</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read(t:Time.class):Time-instance-method">
+      <div class="signature">
+        
+        def <strong>read</strong>(t : <span class="t">Time</span>.<span class="k">class</span>) : Time
+
+        <a class="method-permalink" href="#read%28t%3ATime.class%29%3ATime-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Reads a <code>TIMESTAMP</code> column as a UTC <code>Time</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read(t:(Time|::Nil).class):Time|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>read</strong>(t : (<span class="t">Time</span> <span class="o">|</span> <span class="t">::</span><span class="t">Nil</span>).<span class="k">class</span>) : Time | Nil
+
+        <a class="method-permalink" href="#read%28t%3A%28Time%7C%3A%3ANil%29.class%29%3ATime%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Reads a nullable <code>TIMESTAMP</code> column as a UTC <code>Time?</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read-instance-method">
+      <div class="signature">
+        
+        def <strong>read</strong>
+
+        <a class="method-permalink" href="#read-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Reads the value at the current column and advances to the next one.</p>
+<p>The returned Crystal type is determined by the column's DuckDB type (see
+the README datatype table); <code>NULL</code> becomes <code>nil</code> and any unsupported type
+is returned as a <code>String</code>. Raises <code><a href="../DuckDB/Exception.html">DuckDB::Exception</a></code> on an invalid column.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+</div>
+
+</body>
+</html>

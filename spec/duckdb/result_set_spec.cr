@@ -64,7 +64,7 @@ describe DuckDB::ResultSet do
         Interval.new(0, 0, 1),
         Interval.new(0, 7, 0),
         Interval.new(0, 1, 0),
-        Interval.new(3_600_000_000, 0, 0)
+        Interval.new(3_600_000_000, 0, 0),
       ]
       results = cnn.query_all("SELECT CAST(test_interval AS INTERVAL) FROM test_table", as: Interval)
       results.should eq expected

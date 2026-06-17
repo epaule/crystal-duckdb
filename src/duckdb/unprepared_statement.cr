@@ -1,3 +1,9 @@
+# A statement executed directly by DuckDB without preparation.
+#
+# Used by `crystal-db` when prepared statements are disabled (e.g. the
+# `prepared_statements=false` connection option). Because it sends the SQL text
+# straight to `LibDuckDB.query`, it does not support bind parameters: passing
+# any args raises `DuckDB::Exception`.
 class DuckDB::UnpreparedStatement < DB::Statement
   def initialize(connection, command)
     super(connection, command)
@@ -19,7 +25,7 @@ class DuckDB::UnpreparedStatement < DB::Statement
   private def perform_query_or_exec(args : Enumerable) : LibDuckDB::Result
     raise Exception.new("Unprepared statement exec/query with args is not supported") if args.size > 0
 
-    state = LibDuckDB.query(duckdb_connection, @command, out result)
+    LibDuckDB.query(duckdb_connection, @command, out result)
     result
   end
 end

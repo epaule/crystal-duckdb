@@ -5,7 +5,7 @@ describe DuckDB::Timestamp do
     it "raises if time is not in UTC" do
       time = Time.local
       expect_raises(ArgumentError) do
-        timestamp = DuckDB::Timestamp.new(time)
+        DuckDB::Timestamp.new(time)
       end
     end
 
