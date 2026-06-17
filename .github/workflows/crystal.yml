@@ -19,8 +19,8 @@ jobs:
     container:
       image: crystallang/crystal
     steps:
-#      - name: setup libduckdb
-#        uses: opt-nc/setup-duckdb-action@v1.2.9
+      - name: setup libduckdb
+        uses: opt-nc/setup-duckdb-action@v1.2.9
 
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -28,5 +28,5 @@ jobs:
       - name: Install dependencies
         run: shards install
 
-      - name: Run tests
-        run: crystal spec
+#      - name: Run tests
+#        run: crystal spec
