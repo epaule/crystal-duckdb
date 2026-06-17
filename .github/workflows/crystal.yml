@@ -20,7 +20,7 @@ jobs:
       image: crystallang/crystal
     steps:
       - name: Install duckdb
-        uses: opt-nc/setup-duckdb-action@v1.2.6
+        run: curl https://install.duckdb.org | sh
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Install dependencies
