@@ -19,13 +19,8 @@ jobs:
     container:
       image: crystallang/crystal
     steps:
-      - name: install wget
-        run:
-          sudo apt-get update
-          sudo apt-get install wget
-
-      - name: setup libduckdb
-        uses: opt-nc/setup-duckdb-action@v1.2.9
+#      - name: setup libduckdb
+#        uses: opt-nc/setup-duckdb-action@v1.2.9
 
       - name: Check out repository code
         uses: actions/checkout@v4
